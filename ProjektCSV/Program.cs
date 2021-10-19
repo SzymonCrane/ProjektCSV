@@ -58,9 +58,13 @@ namespace ProjektCSV
             }
             // Wyseparować do osobnych klas/metod resztę kodu np. do SaveDataToCsv()
             
+            
             var reader = CsvTools.ReadWholeCsv(strFilePath + houseFileName);
             Console.WriteLine(reader);
-
+            
+            
+            //TODO
+            // Zrobić automatyczne sczytywanie z listy nazw kolumn i ich właściwości, np. zamiast house.ID w linii 72
  
             StringBuilder houseValues = new StringBuilder("");
             foreach (var house in houses)
