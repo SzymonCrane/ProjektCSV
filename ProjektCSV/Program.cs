@@ -35,6 +35,8 @@ namespace ProjektCSV
                 new Human(5, new DateTime(1995, 11, 11), 198)
             };
             string strFilePath = @"C:\Users\Szymon\source\repos\ProjektCSV\ProjektCSV\";
+            string humanFileName = "humans.csv";
+            string houseFileName = "houses.csv";
             // Jak z dowolnego obiektu wyciągnać listę jego właściwości. - ekspresja 'nameof'
 
             var houseColumnNamesString = CsvTools.GetClassPropertiesString<House>();
@@ -47,25 +49,25 @@ namespace ProjektCSV
             {
                 humanValues.Append($"{human.Id};{human.BirthDay};{human.Height};\n");
             }
-            using (StreamWriter fileHuman = new StreamWriter(strFilePath+"humans.csv", false))
+
+            
+            using (StreamWriter fileHuman = new StreamWriter(strFilePath + humanFileName, false))
             {
                 fileHuman.WriteLine(humanColumnNamesString);
                 fileHuman.WriteLine(humanValues);
             }
             // Wyseparować do osobnych klas/metod resztę kodu np. do SaveDataToCsv()
+            
+            var reader = CsvTools.ReadWholeCsv(strFilePath + houseFileName);
+            Console.WriteLine(reader);
 
-            string fileHumanRead = @"C:\Users\Szymon\source\repos\ProjektCSV\ProjektCSV\humans.csv";
-            string[] lines = File.ReadAllLines(fileHumanRead);
-            Console.WriteLine(String.Join(Environment.NewLine, lines));
-
-            // while( line != null){ }
-
+ 
             StringBuilder houseValues = new StringBuilder("");
             foreach (var house in houses)
             {
                 houseValues.Append($"{house.Id};{house.Name};{house.Surface};{house.IsFlat};{house.Description};\n");
             }
-            using (StreamWriter file = new StreamWriter(strFilePath+"houses.csv", false)) // true = dodaj | false = nadpisz
+            using (StreamWriter file = new StreamWriter(strFilePath+houseFileName, false)) // true = dodaj | false = nadpisz
             { 
                 file.WriteLine(houseColumnNamesString);
                 file.WriteLine(houseValues);
