@@ -34,9 +34,9 @@ namespace ProjektCSV
                 new Human(4, new DateTime(2004, 2, 20), 145),
                 new Human(5, new DateTime(1995, 11, 11), 198)
             };
-            string strFilePath = @"C:\Users\Szymon\source\repos\ProjektCSV\ProjektCSV\";
-            string humanFileName = "humans.csv";
-            string houseFileName = "houses.csv";
+            var strFilePath = @"C:\Users\Szymon\source\repos\ProjektCSV\ProjektCSV\";
+            var humanFileName = "humans.csv";
+            var houseFileName = "houses.csv";
             // Jak z dowolnego obiektu wyciągnać listę jego właściwości. - ekspresja 'nameof'
 
             var houseColumnNamesString = CsvTools.GetClassPropertiesString<House>();
@@ -44,7 +44,7 @@ namespace ProjektCSV
             var humanColumnNamesString = CsvTools.GetClassPropertiesString<Human>();
 
             
-            StringBuilder humanValues = new StringBuilder("");
+            var humanValues = new StringBuilder("");
             foreach (var human in humans)
             {
                 humanValues.Append($"{human.Id};{human.BirthDay};{human.Height};\n");
@@ -59,14 +59,14 @@ namespace ProjektCSV
             // Wyseparować do osobnych klas/metod resztę kodu np. do SaveDataToCsv()
             
             
-            var reader = CsvTools.ReadWholeCsv(strFilePath + houseFileName);
-            Console.WriteLine(reader);
+            var readCSV = CsvTools.ReadCsv(strFilePath + houseFileName);
+            Console.WriteLine(readCSV);
             
             
             //TODO
             // Zrobić automatyczne sczytywanie z listy nazw kolumn i ich właściwości, np. zamiast house.ID w linii 72
  
-            StringBuilder houseValues = new StringBuilder("");
+            var houseValues = new StringBuilder("");
             foreach (var house in houses)
             {
                 houseValues.Append($"{house.Id};{house.Name};{house.Surface};{house.IsFlat};{house.Description};\n");

@@ -13,16 +13,16 @@ namespace ProjektCSV
 
             return houseColumnNamesString;
         }
-        public static StringBuilder ReadWholeCsv(string filePath)
+        public static string ReadCsv(string filePath)
         {
-            StringBuilder arrOfStrings = new StringBuilder("");
+            var sbRead = new StringBuilder("");
             var lines = File.ReadLines(filePath, Encoding.UTF8);
             foreach (string line in lines)
             {
                 string cleanLine = line.Replace(";", " ");
-                arrOfStrings.Append(cleanLine+"\n");
+                sbRead.Append(cleanLine+"\n");
             }
-            return arrOfStrings;
+            return sbRead.ToString();
         }
     }
 }
