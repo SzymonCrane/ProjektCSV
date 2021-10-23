@@ -62,6 +62,17 @@ namespace ProjektCSV
             var readCSV = CsvTools.ReadCsv(strFilePath + houseFileName);
             Console.WriteLine(readCSV);
             
+            using(StreamReader file = new StreamReader(strFilePath+houseFileName))
+            {
+                
+                string? line;
+                string header = line.Skip(1);
+                var newList = new List<House>(header);
+                while(line != null)
+                {
+                    newList.Append(line);
+                }
+            }
             
             //TODO
             // Zrobić automatyczne sczytywanie z listy nazw kolumn i ich właściwości, np. zamiast house.ID w linii 72
