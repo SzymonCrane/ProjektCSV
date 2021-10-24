@@ -61,17 +61,20 @@ namespace ProjektCSV
             
             var readCSV = CsvTools.ReadCsv(strFilePath + houseFileName);
             Console.WriteLine(readCSV);
-            
-            using(StreamReader file = new StreamReader(strFilePath+houseFileName))
+
+            using (StreamReader file = new(strFilePath + houseFileName))
             {
-                
+
                 string? line;
-                string header = line.Skip(1);
-                var newList = new List<House>(header);
-                while(line != null)
+                //  string header = (string)file.ReadLine().Skip(0);
+                var newList = new List{ };
+                do
                 {
-                    newList.Append(line);
-                }
+                    line = file.ReadLine();
+                    newList.Add(line);
+
+                } while (file != null);
+                file.ReadLine(newList);
             }
             
             //TODO
