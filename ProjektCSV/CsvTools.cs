@@ -24,5 +24,7 @@ namespace ProjektCSV
             }
             return sbRead.ToString();
         }
+
+        // lista z listy obiektow pobierajaca wiersze do listy i dopasowująca je przez if'y
     }
 }

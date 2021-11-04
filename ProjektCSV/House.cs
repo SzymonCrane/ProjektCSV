@@ -26,5 +26,9 @@ namespace ProjektCSV
         {
             Console.WriteLine(Id);
         }
+        public void GetProps()
+        {
+            Console.WriteLine($"{Id} {Surface} {Name} {IsFlat} {Description}");
+        }
     }
 }
